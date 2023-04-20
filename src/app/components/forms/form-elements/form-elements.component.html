@@ -1,0 +1,56 @@
+<app-header-breadcrumb [title]="'Agenda tu Cita'"></app-header-breadcrumb>
+<ul>
+  <li><a href="/dashboard">Inicio</a><a> / </a><a href="/forms/form-elements">Agenda tu cita</a></li>
+</ul>
+<br>
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Citas</h3>
+      </div>
+      <div class="card-body pt-2">
+        <form #citaForm="ngForm">
+          <label class="form-label">Nombre del dueño</label>
+          <div class="form-group">
+            <div class="input-icon">
+              <span class="input-icon-addon">
+
+              </span>
+              <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Servicio</label>
+            <ng-select name="id_servicio" class="form-control form-select custom-select" placeholder="Servicio">
+              <ng-option *ngFor="let servicio of servicios" [value]="servicio">{{servicio.descripcion}}</ng-option>
+            </ng-select>
+          </div>
+          <label class="form-label">Raza de la mascota</label>
+          <div class="form-group">
+            <div class="input-icon">
+              <span class="input-icon-addon">
+
+              </span>
+              <input type="text" class="form-control" placeholder="raza de mascota" name="raza_mascota">
+            </div>
+        </div>
+
+          <div class="card-body pt-2">
+            <label class="form-label">Nombre de la mascota</label>
+            <div class="form-group">
+              <span class="input-icon-addon">
+                
+              </span>
+              <input type="text" class="form-control" placeholder="Nombre de la Mascota" name="nom_mascota">
+            </div>
+          </div>
+
+          <a (click)="saveCita()" class="btn btn-primary" type="submit">Enviar formulario</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Row -->

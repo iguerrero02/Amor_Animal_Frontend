@@ -1,0 +1,50 @@
+<app-header-breadcrumb [title]="'Editar impresoras'" [items]="['Pages']" [active_item]="'Editar impresoras'"></app-header-breadcrumb>
+
+<!-- <div class="row">
+    <div class="col-12">
+     <div class="card">
+        <div class="card-header ">
+            <h3 class="card-title ">Impresoras</h3>
+            <div class="card-options">
+
+            </div>
+
+        </div>
+     </div>
+    
+    </div>
+
+</div> -->
+<app-add-printer [_title]="_title" [_btnTitle]="_btnTitle" [_url]="url"></app-add-printer>
+<div class="table-responsive">
+    <table class="table table-hover card-table table-striped table-vcenter table-outline text-nowrap">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">IP</th>
+                <th scope="col">Puerto</th>            
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let print of _printers let i=index">
+                <td>{{print.id}}</td>
+                <td>{{print.mark}}</td>
+                <td>{{print.model}}</td>
+                <td>{{print.ip}}</td>
+                <td>{{print.port}}</td>               
+                <!-- <td>15/11/2018</td>
+                <td>15 Members</td> -->
+                <td>                 
+                    <a class="btn btn-sm btn-primary me-2" routerLink="/pages/print-edit/{{print.id}}"  (click)="editar(print.id)"><i class="fa fa-edit"></i> Editar</a>
+                    <!-- <a class="btn btn-info" routerLink="/edit/{{ tag.id }}">Editar</a>  -->
+                    <a class="btn btn-sm btn-danger" routerLink="/pages/print-remuve/{{print.id}}" ><i class="fa fa-trash"></i>Remover</a>
+                </td>
+              <!-- <td><a class="btn btn-sm btn-secondary" href="javascript:;"><i class="fa fa-info-circle"></i>
+                        Details</a> </td> -->
+            </tr>                    
+     
+        </tbody>      
+    </table>
+</div>

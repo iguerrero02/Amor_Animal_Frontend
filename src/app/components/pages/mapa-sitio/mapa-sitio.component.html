@@ -1,0 +1,240 @@
+<!-- <div class="row">
+  <div class="col-lg-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">MAPA DEL SITIO</h3>
+      </div>
+
+      <nav>
+        <menu>
+          <menuitem><a href="/dashboard">Inicio</a></menuitem>
+
+          <menuitem id="productos">
+            <a href="/ecommerce/products">Productos</a>
+            <menu>
+              <menuitem
+                ><a href="/ecommerce/shopping-cart"
+                  >Carrito de Compras</a
+                ></menuitem
+              >
+              <menuitem
+                ><a href="/ecommerce/checkout"
+                  >Validación de compra</a
+                ></menuitem
+              >
+            </menu>
+          </menuitem>
+
+
+              <menuitem id="vermascotas">
+                <a href="/pages/blog">Ver mascotas</a>
+                <menu>
+                  <menuitem id="conejo">
+                    <a href="/pages/blog-details">Conejo</a>
+                    <menu>
+                      <menuitem><a href="/pages/adopcion">Adoptar</a></menuitem>
+                    </menu>
+                  </menuitem>
+                  <menuitem id="hamster">
+                    <a href="/pages/detalles2">Hamster</a>
+                    <menu>
+                      <menuitem><a href="/pages/adopcion">Adoptar</a></menuitem>
+                    </menu>
+                  </menuitem>
+                  <menuitem id="cabeza">
+                    <a href="/pages/detalles3">Conejo Cabeza de León</a>
+                    <menu>
+                      <menuitem><a href="/pages/adopcion">Adoptar</a></menuitem>
+                    </menu>
+                  </menuitem>
+                  <menuitem id="fold">
+                    <a href="/pages/detalles4">Gato Scottish fold</a>
+                    <menu>
+                      <menuitem><a href="/pages/adopcion">Adoptar</a></menuitem>
+                    </menu>
+                  </menuitem>
+                  <menuitem id="birmano">
+                    <a href="/pages/detalles5">Gato Birmano</a>
+                    <menu>
+                      <menuitem><a href="/pages/adopcion">Adoptar</a></menuitem>
+                    </menu>
+                  </menuitem>
+
+                  <menuitem id="bengala">
+                    <a href="/pages/detalles6">Gato de Bengala</a>
+                    <menu>
+                      <menuitem><a href="/pages/adopcion">Adoptar</a></menuitem>
+                    </menu>
+                  </menuitem>
+                </menu>
+              </menuitem>
+
+          <menuitem><a href="/forms/form-elements">Generar Cita</a></menuitem>
+        </menu>
+      </nav>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <body>
+
+        <script src="./mapa-sitio.component.ts"></script>
+        </body>
+    </div>
+  </div>
+</div> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mapa del sitio</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .heading {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .site-map {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .site-map-section {
+      flex-basis: calc(25% - 20px);
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #924ec98e;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .site-map-section:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .site-map-section-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .site-map-section-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .site-map-section-list li {
+      margin-bottom: 10px;
+    }
+
+    .site-map-section-list li a {
+      color: #666;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .site-map-section-list li a:hover {
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="heading">Mapa del sitio</h1>
+    <div class="site-map">
+      <div class="site-map-section">
+        <h2 class="site-map-section-title" href="/dashboard">Inicio</h2>
+
+      </div>
+      <div class="site-map-section">
+        <h2 class="site-map-section-title" href="/ecommerce/products">Productos</h2>
+        <ul class="site-map-section-list">
+          <li><a href="/ecommerce/shopping-cart">Carrito de Compras</a></li>
+          <li><a href="/ecommerce/checkout">Validación de compra</a></li>
+
+        </ul>
+      </div>
+      <div class="site-map-section">
+        <h2 class="site-map-section-title" href="/pages/blog">Mascotas</h2>
+        <ul class="site-map-section-list">
+          <li><a href="/pages/blog-details">Conejo</a></li>
+          <li><a href="/pages/detalles2">Hamster</a></li>
+          <li><a href="/pages/detalles3">Conejo Cabeza de León</a></li>
+          <li><a href="/pages/detalles4">Gato Scottish fold</a></li>
+          <li><a href="/pages/detalles5">Gato Birmano</a></li>
+          <li><a href="/pages/detalles6">Gato de Bengala</a></li>
+        </ul>
+      </div>
+      <div class="site-map-section">
+        <h2 class="site-map-section-title" href="/pages/blog">Citas</h2>
+        <ul class="site-map-section-list">
+          <li><a href="/forms/form-elements">Generar Cita</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

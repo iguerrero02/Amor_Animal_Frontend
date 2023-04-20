@@ -1,0 +1,21 @@
+::ng-deep{
+    .dark-mode{
+        .app.sidebar-mini.sidenav-toggled.sidenav-toggled-open .app-sidebar .side-header .header-brand-img.light-logo1{
+            display: none !important;
+        }
+        .app.sidebar-mini.sidenav-toggled.sidenav-toggled-open .app-sidebar .side-header .header-brand-img.desktop-logo{
+            display: block !important;
+        }
+    }
+    @media (min-width: 768px){
+        .dark-menu .app-sidebar .side-header .header-brand-img.light-logo1,
+        .gradient-menu .app-sidebar .side-header .header-brand-img.light-logo1
+         {
+            display: none !important;
+        }
+    }
+    
+    .app-sidebar{
+        touch-action: none;
+    }
+}

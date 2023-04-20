@@ -1,0 +1,56 @@
+<app-header-breadcrumb [title]="'Productos'"></app-header-breadcrumb>
+<!-- ROW-1 OPEN -->
+<ul>
+  <li><a href="/dashboard">Inicio</a><a> / </a><a href="/ecommerce/products">Productos</a></li>
+</ul>
+<br>
+<div class="row row-cards">
+    <div class="col-xl-2 col-lg-2">
+
+    </div><!-- COL-END -->
+    <div class="col-xl-9 col-lg-8">
+        <div class="row">
+            <div *ngFor="let product of productos " class="col-md-6 col-xl-4">
+                <div  class="card item-card">
+                    <div class="product-grid6  card-body ">
+                        <div class="product-image6">
+                            <a routerLink="/ecommerce/product-details">
+                                <img class="img-fluid" src={{product.imagen}} alt="img">
+                            </a>
+                        </div>
+                        <div class="product-content text-center">
+                            <div class="text-center mb-2 text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h4  class="title" >
+                                {{product.descripcion}}
+                            </h4>
+                            <div class="price">
+                                ${{product.precio}}
+                            </div>
+                        </div>
+                        <ul class="icons">
+                            <li><a routerLink="/ecommerce/shopping-cart" data-tip="Quick View"><i
+                                        class="fe fe-eye "></i></a>
+                            </li>
+                            <li><a (click)="addToCart(product)" data-tip="Add to Cart"><i
+                                        class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <div class="float-end">
+
+                    <ngb-pagination [collectionSize]="12" [(page)]="basicPage"
+                     [pageSize]="pageSize" aria-label="Default pagination"></ngb-pagination>
+                </div>
+            </div>
+        </div><!-- COL-END -->
+    </div>
+    <!-- ROW-1 CLOSED -->

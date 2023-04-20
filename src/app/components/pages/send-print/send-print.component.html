@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Imprimir</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                    <label for="exampleInputname" class="form-label">Titulo</label>
+                    <input type="text" class="form-control" id="exampleInputname"  #title="ngModel" [(ngModel)]="_tag.title"  readonly="readonly">
+                </div>
+            </div>
+         
+        <div class="form-group">
+            <label class="form-label">Descripción</label>
+            <textarea class="form-control" rows="6" #body="ngModel" [(ngModel)]="_tag.body"  readonly="readonly">{{ _tag.body }}</textarea>
+        </div>  
+            <label for="validationTooltip04">Impresoras</label>
+            <select class="form-select select2 form-control"  id="impr" [(ngModel)]="_print.id" required (change)="capturar()">           
+                <option  value=0 >Selecciona una impresora</option>
+                <option [value]="print.id" *ngFor="let print of _printers">{{print.mark}}</option>
+            </select>      
+    </div>
+    <ng-container *ngIf="_print.id>0">
+        <div class="form-group">
+            <label for="exampleInputname" class="form-label">Marca</label>
+            <input type="text" class="form-control" id="exampleInputname"  #mark="ngModel" [(ngModel)]="_print.mark"  readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputname" class="form-label">IP</label>
+            <input type="text" class="form-control" id="exampleInputname"  #ip="ngModel" [(ngModel)]="_print.ip">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputname" class="form-label">Puerto</label>
+            <input type="text" class="form-control" id="exampleInputname"  #port="ngModel" [(ngModel)]="_print.port">
+        </div> 
+    </ng-container>
+
+    <div class="card-footer text-end">
+        <a id="sentPrint" href="javascript:;" class="btn btn-success mt-1 me-2" >Enviar</a>
+        <a href="javascript:;" class="btn btn-danger mt-1" [routerLink]="['/pages/edit-etiqueta']" >Cancel</a>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+<app-header-breadcrumb [title]="'Carrito de Compras'"></app-header-breadcrumb>
+<ul>
+  <li><a href="/dashboard">Inicio</a><a> / </a><a href="/ecommerce/shopping-cart">Carrito de Compras</a></li>
+</ul>
+<br>
+<!-- ROW-1 OPEN -->
+<div class="row">
+    <div class="col-xl-8 col-md-12">
+        <div class="card cart">
+            <div class="card-header">
+                <h3 class="card-title">Shopping Cart</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-vcenter text-nowrap mb-0">
+                        <thead>
+                            <tr class="border-top">
+                                <th class="w-5">Product</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th class="w-25">Quantity</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of cartItems">
+                                <td>
+                                    <img src="{{obj.imagen}}" alt="" class="cart-img">
+                                </td>
+                                <td>{{obj.descripcion}}</td>
+                                <td class="fw-bold">{{obj.precio * com}}</td>
+                                <td>
+                                    <div class="input-group input-indec">
+                                        <span class="input-group-btn">
+                                            <button id="minus" type="button"
+                                                class="minus btn btn-light btn-number br-tl-4 br-tr-0 br-bl-4 br-br-0 ">
+                                                <i class="fa fa-minus fs-10"></i>
+                                            </button>
+                                        </span>
+                                        <input type="text" name="quantity" class="form-control text-center qty"
+                                            value="1">
+                                        <span class="input-group-btn">
+                                            <button id="plus" type="button"
+                                                class="quantity-right-plus btn btn-light btn-number br-tr-4 br-tl-0 br-br-4 br-bl-0  add">
+                                                <i class="fa fa-plus fs-10"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+
+                                    <a href="javascript:void(0)" class="btn btn-square btn-info-light me-1"
+                                        (click)="RemoveElementFromObjectArray(obj.id)" placement="top"
+                                        ngbTooltip="Remove"><i class="icon icon-trash  fs-13"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Price Details</h3>
+            </div>
+            <div class="card-body">
+                <table class="table border-top-0">
+                    <tr>
+                        <td class="fs-20 fw-bold border-top-0">Total</td>
+                        <td class="text-end fs-20 fw-bold border-top-0">{{total}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <div class="step-footer text-end">
+                    <a routerLink="/ecommerce/products" class="btn btn-primary me-2"><i
+                            class="fa fa-arrow-left me-1"></i>Continue
+                        Shopping</a>
+                    <a routerLink="/ecommerce/checkout" class="btn btn-success">Check out<i
+                            class="fa fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- COL-END -->
+<!-- ROW-1 CLOSED -->

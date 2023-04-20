@@ -1,0 +1,141 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/dist/css/bootstrap.css';
+// perfect scrollbar
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+// angular material
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+// material icon
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+// leaflet
+@import '~leaflet/dist/leaflet.css';
+
+//calendar
+@import "~flatpickr/dist/flatpickr.css";
+@import "~angular-calendar/css/angular-calendar.css";
+
+@import '~animate.css/animate.min.css';
+
+// ng-select
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+// owl-carousel
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+// chartist
+@import "~chartist/dist/scss/chartist.scss";
+
+//dropzone
+@import '~dropzone/dist/min/dropzone.min.css';
+
+// tel
+@import "~intl-tel-input/build/css/intlTelInput.css";
+
+//quill
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+    
+@import '~angular-archwizard/styles/archwizard.css';
+@import '~ngx-toastr/toastr.css';
+
+// ngx data table
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/themes/bootstrap.scss';
+@import '~@swimlane/ngx-datatable/themes/dark.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+// Custom css
+@import 'assets/css/style.css';
+@import 'assets/css/dark-style.css';
+@import 'assets/css/skin-modes.css';
+@import 'assets/css/sidemenu.css';
+
+@import 'assets/css/icons.css';
+@import 'assets/plugins/single-page/css/main.css';
+@import 'assets/plugins/sidebar/sidebar.css';
+@import "assets/colors/color1.css";
+
+a, button{
+    text-decoration: none !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.35rem 1.25rem;
+    color: inherit;
+    font-size: 1.40625rem;
+}
+
+.ng-select .ng-select-container{
+    border: none !important;
+}
+.form-control:focus, 
+.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container,
+.btn-check:focus + .btn, .btn:focus{
+    box-shadow: none;
+}
+
+.dropdown-menu , 
+.tooltip, 
+.popover,
+.ng-dropdown-panel, 
+.md-drppicker, 
+.color-picker,
+.chat .attach_btn,
+.cdk-overlay-container,
+.dropdown-list,
+.leaflet-control,
+.leaflet-pane,
+.ng-select.ng-select-opened .ng-select-container,
+.nav-tabs{
+    z-index: 5 !important;
+}
+
+
+
+
+.cdk-overlay-backdrop{
+    z-index: 4 !important;
+}
+
+.leaflet-top, .leaflet-bottom{
+    z-index: 400 !important;
+}
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+    background-color: #6259ca;
+    color: #fff;
+}
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected, .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
+    color: #fff;
+    background-color: #6259ca;
+}
+
+.dark-mode{
+    .ng-select .ng-select-container,
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option{
+        background: #30304d;
+        color: #fff ;
+    }
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+        background-color: #23233c;
+        color: #fff;
+    }
+    ng-dropdown-panel{
+        border-color: #23233cbd !important;
+    }
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected, 
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
+        background-color: #23233c !important;
+    }
+}

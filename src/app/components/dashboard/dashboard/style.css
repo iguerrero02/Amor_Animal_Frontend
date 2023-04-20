@@ -1,0 +1,73 @@
+/* estilos generales para toda la página */
+body {
+font-family: 'Underdog', cursive;
+margin: 0;
+}
+
+.bg-color-info {
+background-color: rgb(244, 246, 251);
+}
+
+.font-color-general {
+color: rgb(67, 105, 176);
+}
+
+.brand-name {
+font-size: 1.8rem;
+color: rgb(67, 105, 176);
+margin-left: 2rem;
+}
+
+.bg-img-principal {
+background-image: url("/src/assets/images/media/main.jpg");
+background-size: cover;
+height: 650px;
+background-position: center center;
+}
+
+/* .bloque-texto-principal {
+margin-top:;
+} */
+
+.bg-color-azul {
+background-color: rgb(67, 105, 176);
+}
+
+.hrblanco {
+width: 10%;
+background-color: white;
+}
+
+.hrazul {
+width: 10%;
+background-color: rgb(244, 246, 251);
+}
+
+
+/* estilos específicos para pantallas menores a 992px (menor que lg de bootstrap) */
+@media only screen and (max-width : 992px) {
+
+.brand-name {
+  font-size: 1.8rem;
+  color: rgb(67, 105, 176);
+  margin-left: 1rem;
+}
+
+/* tenemos 1 imagen específica para móvil */
+.bg-img-principal {
+  background-image: url("/src/assets/images/media/main.jpg");
+  background-size: cover;
+  height: 200px;
+  background-position: center center;
+}
+}
+ngb-carousel .wrapper {
+  position: relative;
+  height: 0;
+  padding-top: 55%; /* Keep ratio for 900x500 images */
+}
+
+ngb-carousel .wrapper>img {
+  position: absolute;
+  top: 0;
+}

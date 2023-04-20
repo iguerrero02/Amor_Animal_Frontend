@@ -1,0 +1,24 @@
+
+<div class="app sidebar-mini" [ngClass]="sidenavtoggled1" >
+    <!-- switcher -->
+    <app-switcher></app-switcher>
+    <div class="page">
+        <div class="page-main">
+            <!-- sidebar -->
+            <app-sidemenu (mouseover)="hoverEffect($event)"
+            (mouseout)="hoverEffect($event)"></app-sidemenu>
+
+            <!-- header -->
+            <app-header></app-header>
+            
+            <div class="app-content">
+                <div class="side-app">
+                    <router-outlet> </router-outlet>
+                </div>
+            </div>
+        </div>
+        <app-notification-sidemenu></app-notification-sidemenu>
+        <!-- footer  -->
+        <app-footer></app-footer>
+    </div>
+</div>

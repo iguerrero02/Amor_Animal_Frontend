@@ -1,0 +1,11 @@
+.dropdown-toggle:after{
+    display: none !important;
+}
+
+@media (max-width: 768px){
+.responsive-navbar .dropdown-menu.dropdown-menu-start.show,
+.responsive-navbar .dropdown-menu.dropdown-menu-end.show {
+    right: 0 !important;
+    left: 0 !important;
+}
+}

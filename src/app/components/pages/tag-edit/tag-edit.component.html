@@ -1,0 +1,136 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Editar etiqueta</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                    <label for="exampleInputname" class="form-label">Titulo</label>
+                    <input type="text" class="form-control" id="exampleInputname"  #title="ngModel" [(ngModel)]="_tag.title" placeholder="Titulo">
+                </div>
+            </div>
+            <!-- <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                    <label for="exampleInputname1" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="exampleInputname1"
+                        placeholder="Descripción">
+                </div>
+            </div> -->
+        </div>
+        <!-- <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email address">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputnumber">Conatct Number</label>
+            <input type="number" class="form-control" id="exampleInputnumber" placeholder="ph number">
+        </div> -->
+        <div class="form-group">
+            <label class="form-label">Descripción</label>
+            <textarea class="form-control" rows="6" #body="ngModel" [(ngModel)]="_tag.body" >{{ _tag.body }}</textarea>
+        </div>
+        <!-- <div class="form-group">
+            <label class="form-label">Website</label>
+            <input class="form-control" placeholder="http://splink.com">
+        </div> -->
+        <!-- <div class="form-group">
+            <label class="form-label">Date Of Birth</label>
+            <div class="row">
+                <div class="col-md-4">
+                    <ng-select class="form-control form-select custom-select">
+                        <ng-option value="0">Date</ng-option>
+                        <ng-option value="1">01</ng-option>
+                        <ng-option value="2">02</ng-option>
+                        <ng-option value="3">03</ng-option>
+                        <ng-option value="4">04</ng-option>
+                        <ng-option value="5">05</ng-option>
+                        <ng-option value="6">06</ng-option>
+                        <ng-option value="7">07</ng-option>
+                        <ng-option value="8">08</ng-option>
+                        <ng-option value="9">09</ng-option>
+                        <ng-option value="10">10</ng-option>
+                        <ng-option value="11">11</ng-option>
+                        <ng-option value="12">12</ng-option>
+                        <ng-option value="13">13</ng-option>
+                        <ng-option value="14">14</ng-option>
+                        <ng-option value="15">15</ng-option>
+                        <ng-option value="16">16</ng-option>
+                        <ng-option value="17">17</ng-option>
+                        <ng-option value="18">18</ng-option>
+                        <ng-option value="19">19</ng-option>
+                        <ng-option value="20">20</ng-option>
+                        <ng-option value="21">21</ng-option>
+                        <ng-option value="22">22</ng-option>
+                        <ng-option value="23">23</ng-option>
+                        <ng-option value="24">24</ng-option>
+                        <ng-option value="25">25</ng-option>
+                        <ng-option value="26">26</ng-option>
+                        <ng-option value="27">27</ng-option>
+                        <ng-option value="28">28</ng-option>
+                        <ng-option value="29">29</ng-option>
+                        <ng-option value="30">30</ng-option>
+                        <ng-option value="31">31</ng-option>
+                    </ng-select>
+                </div>
+                <div class="col-md-4">
+                    <ng-select class="form-control form-select custom-select">
+                        <ng-option value="0">Mon</ng-option>
+                        <ng-option value="1">Jan</ng-option>
+                        <ng-option value="2">Feb</ng-option>
+                        <ng-option value="3">Mar</ng-option>
+                        <ng-option value="4">Apr</ng-option>
+                        <ng-option value="5">May</ng-option>
+                        <ng-option value="6">June</ng-option>
+                        <ng-option value="7">July</ng-option>
+                        <ng-option value="8">Aug</ng-option>
+                        <ng-option value="9">Sep</ng-option>
+                        <ng-option value="10">Oct</ng-option>
+                        <ng-option value="11">Nov</ng-option>
+                        <ng-option value="12">Dec</ng-option>
+                    </ng-select>
+                </div>
+                <div class="col-md-4">
+                    <ng-select class="form-control form-select custom-select">
+                        <ng-option value="0">Year</ng-option>
+                        <ng-option value="1">2018</ng-option>
+                        <ng-option value="2">2017</ng-option>
+                        <ng-option value="3">2016</ng-option>
+                        <ng-option value="4">2015</ng-option>
+                        <ng-option value="5">2014</ng-option>
+                        <ng-option value="6">2013</ng-option>
+                        <ng-option value="7">2102</ng-option>
+                        <ng-option value="8">2012</ng-option>
+                        <ng-option value="9">2011</ng-option>
+                        <ng-option value="10">2010</ng-option>
+                        <ng-option value="11">2009</ng-option>
+                        <ng-option value="12">2008</ng-option>
+                        <ng-option value="13">2007</ng-option>
+                        <ng-option value="14">2006</ng-option>
+                        <ng-option value="15">2005</ng-option>
+                        <ng-option value="16">2004</ng-option>
+                        <ng-option value="17">2003</ng-option>
+                        <ng-option value="18">2002</ng-option>
+                        <ng-option value="19">2001</ng-option>
+                        <ng-option value="20">1999</ng-option>
+                        <ng-option value="21">1998</ng-option>
+                        <ng-option value="22">1997</ng-option>
+                        <ng-option value="23">1996</ng-option>
+                        <ng-option value="24">1995</ng-option>
+                        <ng-option value="25">1994</ng-option>
+                        <ng-option value="26">1993</ng-option>
+                        <ng-option value="27">1992</ng-option>
+                        <ng-option value="28">1991</ng-option>
+                        <ng-option value="29">1990</ng-option>
+                        <ng-option value="30">1989</ng-option>
+                        <ng-option value="31">1988</ng-option>
+                    </ng-select>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <div class="card-footer text-end">
+        <a href="javascript:;" class="btn btn-success mt-1 me-2" (click)="update()" >Guardar</a>
+        <a href="javascript:;" class="btn btn-danger mt-1"   [routerLink]="['/pages/edit-etiqueta']" >Cancel</a>
+    </div>
+</div>
