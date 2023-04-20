@@ -1,7 +1,8 @@
 <app-header-breadcrumb [title]="'Adopta'"></app-header-breadcrumb>
 
 <ul>
-  <li><a href="/dashboard">Inicio</a><a> / </a><a href="/pages/blog">Ver mascotas</a><a> / </a><a href="/pages/adopcion">Adoptar</a></li>
+  <li><a href="/dashboard">Inicio</a><a> / </a><a href="/pages/blog">Ver mascotas</a><a> / </a><a
+      href="/pages/adopcion">Adoptar</a></li>
 </ul>
 
 <br>
@@ -15,66 +16,72 @@
       </div>
       <div class="card-body pt-2">
         <div class="form-group">
-          <label class="form-label">Mascota</label>
-          <div class="form-group">
-            <label for="mascota">Mascota:</label>
-            <select class="form-control" id="mascota" [(ngModel)]="adopcion.id_mascota" name="mascota">
-              <option value="">Seleccione una mascota</option>
-              <option *ngFor="let mascota of mascotas" [value]="mascota.id_mascota">{{mascota.nombre}}</option>
-            </select>
-          </div>
+          <form [formGroup]="adopcionForm">
+            <div class="form-group">
+              <label class="form-label">Mascota:</label>
+              <select formControlName="id_mascota" class="form-control" [(ngModel)]="adopcion.id_mascota"
+                name="mascota">
+                <option value="">Seleccione una mascota</option>
+                <option *ngFor="let mascota of mascotas" [value]="mascota.id_mascota">{{mascota.nombre}}</option>
+              </select>
+            </div>
 
 
-          <div class="form-group">
-            <label class="form-label">Nombre(s)</label>
             <div class="form-group">
-              <div class="input-icon">
-                <span class="input-icon-addon">
-                  <i class="fe fe-user"></i>
-                </span>
-                <input type="text" class="form-control" placeholder="Nombre" />
-              </div>
-            </div>
-          <div class="form-group">
-            <label class="form-label">Apellidos</label>
-            <div class="form-group">
-              <div class="input-icon">
-                <span class="input-icon-addon">
-                  <i class="fe fe-user"></i>
-                </span>
-                <input type="text" class="form-control" placeholder="Apellidos" />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-5">
-                <label class="form-label">Edad</label>
-                <span class="input-icon-addon">
-                </span>
-                <input type="number" class="form-control" placeholder="Edad" />
-              </div>
-            </div>
-            <div class="row">
-            <div class="col-md-12">
+              <label class="form-label">Nombre(s)</label>
               <div class="form-group">
-                <label class="form-label">Dirección <span class="text-red">*</span></label>
-                <input type="text" class="form-control" placeholder="Dirección" />
+                <div class="input-icon">
+                  <span class="input-icon-addon">
+                    <i class="fe fe-user"></i>
+                  </span>
+                  <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" />
+                </div>
               </div>
-            </div>
-            <div class="col-sm-6 col-md-6">
               <div class="form-group">
-                <label class="form-label">Ciudad <span class="text-red">*</span></label>
-                <input type="text" class="form-control" placeholder="Ciudad" />
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-6">
-              <div class="form-group">
-                <label class="form-label">Codigo Postal<span class="text-red">*</span></label>
-                <input type="number" class="form-control" placeholder="Codigo" />
-              </div>
-            </div>
-            <div class="col-md-12">
-              <a (click)="saveAdopcion()" class="btn btn-square btn-primary-light me-1">Adoptar</a>
-            </div>
-          </div>
-        </div>
+                <label class="form-label">Apellidos</label>
+                <div class="form-group">
+                  <div class="input-icon">
+                    <span class="input-icon-addon">
+                      <i class="fe fe-user"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Apellidos" formControlName="apellido" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-5">
+                    <label class="form-label">Edad</label>
+                    <span class="input-icon-addon">
+                    </span>
+                    <input type="number" class="form-control" placeholder="Edad" formControlName="edad" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-label">Dirección <span class="text-red">*</span></label>
+                      <input type="text" class="form-control" placeholder="Dirección" formControlName="direccion" />
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Ciudad <span class="text-red">*</span></label>
+                      <input type="text" class="form-control" placeholder="Ciudad" formControlName="ciudad" />
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Codigo Postal<span class="text-red">*</span></label>
+                      <input type="number" class="form-control" placeholder="Codigo Postal"
+                        formControlName="codigo_postal" />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <button (click)="saveAdopcion()" class="btn btn-square btn-primary-light me-1">Adoptar</button>
+                  </div>
+
+                </div>
+
+
       </div>
+    </div>
+

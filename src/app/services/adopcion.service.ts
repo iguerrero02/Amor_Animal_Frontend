@@ -7,7 +7,7 @@ import { Adopcion } from '../models/adopcion';
   providedIn: 'root'
 })
 export class AdopcionService {
-  private apiUrl: string = '/api/adopciones';
+  private apiUrl = 'http://localhost:8081/api/adopciones';
 
   constructor(private http: HttpClient) { }
 

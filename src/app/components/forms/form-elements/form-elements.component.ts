@@ -21,6 +21,7 @@ export class FormElementsComponent implements OnInit {
   constructor(private fb: FormBuilder, private citasService: CitaService, private servicioService: ServicioService) { }
 
   ngOnInit(): void {
+
     this.getCitas();
     this.getServicios();
     this.createForm();
@@ -29,7 +30,7 @@ export class FormElementsComponent implements OnInit {
 
   createForm() {
     this.citasForm = this.fb.group({
-      id_cita: [''],
+      id_cita:[''],
       nom_cliente: ['', Validators.required],
       raza_mascota: ['', Validators.required],
       nom_mascota: ['', Validators.required],
@@ -40,18 +41,21 @@ export class FormElementsComponent implements OnInit {
   getCitas() {
     this.citasService.getCitas().subscribe(data => {
       this.citas = data;
+
     });
   }
 
   getServicios() {
     this.servicioService.getServiciosList().subscribe(data => {
       this.servicios = data;
+
     });
   }
 
   saveCita() {
     if (this.citasForm.valid) {
-      this.citasService.addCita(this.citasForm.value).subscribe(data => {
+      const cita = this.citasForm.value;
+      this.citasService.addCita(cita).subscribe(data => {
         this.getCitas();
         this.citasForm.reset();
         Swal.fire({
@@ -59,6 +63,15 @@ export class FormElementsComponent implements OnInit {
           title: 'Cita agregada con éxito',
           showConfirmButton: false,
           timer: 1500
+        });
+      }, error => {
+        console.log('Error al guardar la cita: ', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al guardar la cita',
+          text: 'Ha ocurrido un error al guardar la cita, por favor intente nuevamente',
+          showConfirmButton: true,
+          confirmButtonText: 'Aceptar'
         });
       });
     } else {
@@ -70,6 +83,7 @@ export class FormElementsComponent implements OnInit {
       });
     }
   }
+
 
   deleteCita(id: number) {
     Swal.fire({
