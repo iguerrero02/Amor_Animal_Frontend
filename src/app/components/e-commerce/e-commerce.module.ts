@@ -11,6 +11,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -29,7 +30,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     NgSelectModule,
     CarouselModule,
     SweetAlert2Module,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class ECommerceModule { }

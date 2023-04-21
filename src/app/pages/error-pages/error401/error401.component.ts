@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-error401',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Error401Component implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  redirect(){
+    this.router.navigate(['/dashboard']);
   }
 
 }

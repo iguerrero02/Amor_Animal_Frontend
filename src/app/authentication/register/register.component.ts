@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { VeterinariaService } from 'src/app/services/veterinaria.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -14,10 +15,60 @@ export class RegisterComponent implements OnInit {
   message = '';
   errorMessage = ''; // validation error handle
   error: { name: string, message: string } = { name: '', message: '' }; // for firbase error handle
+  nombreCliente:any;
+  apellidoP:any;
+  apellidoM:any;
+  telefono:any;
+  passwordConfirm:any = "";
+  passwordsMatch: boolean = false;
+  token = "a";
 
-  constructor(private authservice: AuthService, private router:Router) { }
+
+
+  constructor(private authservice: AuthService, private router:Router,
+    private clienteService: VeterinariaService) { }
 
   ngOnInit(): void {
+    this.checkPasswords();
+  }
+
+  register()
+  {
+    const cliente = {
+      correoElectronico: this.email,
+      password: this.password,
+      nombre:this.nombreCliente,
+      apellidoPaterno: this.apellidoP,
+      apellidoMaterno: this.apellidoM,
+      telefono: this.telefono,
+      token: this.token
+    }
+
+    this.clienteService.registrarCliente(cliente).subscribe(
+      response=>{
+        console.log("Cliente registrado")
+        this.email = "";
+        this.password = "";
+        this.nombreCliente = ""
+        this.apellidoP = ""
+        this.apellidoM = ""
+        this.telefono = "";
+        window.alert("Se a registrado el usuario correctamenete");
+      },error => {
+        console.log('Password is incorrect');
+      }
+    )
+
+
+  }
+
+
+  checkPasswords() {
+    if (this.password !== this.passwordConfirm) {
+      this.passwordsMatch = true;
+    } else {
+      this.passwordsMatch = false;
+    }
   }
 
   clearErrorMessage()
@@ -26,20 +77,7 @@ export class RegisterComponent implements OnInit {
     this.error = {name : '' , message:''};
   }
 
-  register()
-  {
-    this.clearErrorMessage();
-    if (this.validateForm(this.email, this.password)) {
-      this.authservice.registerWithEmail(this.email, this.password)
-        .then(() => {
-          this.message = "you are register with data on firbase"
-          this.router.navigate(['/dashboard'])
-        }).catch((_error:any) => {
-          this.error = _error
-          this.router.navigate(['/auth/register'])
-        })
-    }
-  }
+ 
 
   validateForm(email:string, password:string)
   {
@@ -54,7 +92,7 @@ export class RegisterComponent implements OnInit {
       return false;
     }
 
-    if (password.length < 6)
+    if (password.length < 4)
     {
       this.errorMessage = "password should be at least 6 char";
       return false;

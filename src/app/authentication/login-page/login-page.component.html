@@ -1,3 +1,6 @@
+
+
+<script src="funcionP.js"></script>
 <div class="login-img">
     <div class="page">
         <div class="">
@@ -10,105 +13,61 @@
                 </div>
             </div>
                 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills container-login100">
-                    <li ngbNavItem="Firebase">
-
-                        <ng-template ngbNavContent>
-
-						<div class="wrap-login100 p-0">
-							<div class="card-body">
-                                <form (ngSubmit)="login()" class="login100-form validate-form">
-
-                                    <span class="login100-form-title">
-                                        Iniciar Sesión
-                                    </span>
-
-
-                                    <div class="wrap-input100 validate-input">
-                                        <input type="email" name="email" class="form-control input100" [(ngModel)]="email" placeholder="Enter email Id" required>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="zmdi zmdi-email" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                    <div class="wrap-input100 validate-input">
-                                        <input type="password" name="password" class="form-control input100" [(ngModel)]="password" placeholder="Enter Password" re
-                                        quired>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="zmdi zmdi-lock" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-
-                                    <div class="text-end pt-1">
-                                        <p class="mb-0"><a routerLink="/custom-pages/forget-password" class="text-primary ms-1">Recuperar Contraseña?</a></p>
-                                    </div>
-                                    <div class="container-login100-form-btn">
-                                        <button type="submit" class="login100-form-btn btn-primary"> Iniciar Sesión</button>
-                                    </div>
-                                    <div class="form-group">
-                                    <p *ngIf="errorMessage.length > 0" class="text-danger">
-                                        {{errorMessage}}</p>
-
-                                    <p *ngIf="_error.message.length > 0" class="text-danger">
-                                        {{_error.message}} </p>
-                                    </div>
-                                    <div class="text-center pt-3">
-                                        <p class="text-dark mb-0">No tienes usuario?<a routerLink="/auth/register" class="text-primary ms-1">Crea uno ahora</a></p>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="card-footer">
-								<div class="d-flex justify-content-center my-3">
-									<a href="javascript:;" class="social-login  text-center me-4">
-										<i class="fa fa-google"></i>
-									</a>
-									<a href="javascript:;" class="social-login  text-center me-4">
-										<i class="fa fa-facebook"></i>
-									</a>
-									<a href="javascript:;" class="social-login  text-center">
-										<i class="fa fa-twitter"></i>
-									</a>
-								</div>
-							</div>
-                        </div>
-                        </ng-template>
-                    </li>
                     <li ngbNavItem="Angular">
 
                         <ng-template ngbNavContent>
                             <div class="wrap-login100 p-0">
                                 <div class="card-body">
-                                    <form [formGroup]="loginForm" class="login100-form validate-form" (ngSubmit)="Submit()">
+                                    <form class="login100-form validate-form" (ngSubmit)="consultarClientes()">
                                         <span class="login100-form-title">
                                             Login
                                         </span>
 
-                                        <div class="wrap-input100 validate-input">
-                                            <input type="text" class="form-control input100" placeholder="Username" autocomplete formControlName="username">
+                                        <div class="wrap-input100 validate-input"  #inputEmail id="inputEmail">
+                                            <input  type="email" name="email" class="form-control input100" [(ngModel)]="email" placeholder="Enter email Id" required>
                                             <span class="focus-input100"></span>
                                             <span class="symbol-input100">
                                                 <i class="zmdi zmdi-email" aria-hidden="true"></i>
                                             </span>
                                         </div>
-                                        <div class="wrap-input100 validate-input">
-                                            <input type="password" class="form-control input100" placeholder="Password" autocomplete formControlName="password">
+                                        <div class="wrap-input100 validate-input" #inputPass id="inputPass">
+                                            <input  type="password" name="password" class="form-control input100" [(ngModel)]="password" placeholder="Enter Password" re
+                                            quired>
                                             <span class="focus-input100"></span>
                                             <span class="symbol-input100">
                                                 <i class="zmdi zmdi-lock" aria-hidden="true"></i>
                                             </span>
                                         </div>
+                                        <div class="form-group">
+                                            <p *ngIf="showMessage" class="text-danger">
+                                                {{errorMessage}}</p>
+                                            
+                                            <p *ngIf="_error.message.length > 0" class="text-danger">
+                                                {{_error.message}} </p>
+                                            </div>
                                         {{error}}
 
-                                        <div class="text-end pt-1">
+                                        <div class="text-end pt-1" #forgot id="forgot">
                                             <p class="mb-0"><a routerLink="/custom-pages/forget-password" class="text-primary ms-1">Forgot Password?</a></p>
                                         </div>
                                         <div class="container-login100-form-btn">
-                                            <button [disabled]="!loginForm.valid" type="submit" class="login100-form-btn btn-primary"> Login</button>
+                                            <button  #submitbtn id="submitbtn"  type="submit" class="login100-form-btn btn-primary"> Login</button>
+                                            <button #submitbtn2 id="submitbtn2" disabled  type="submit" class="login100-form-btn "> Login</button>
                                         </div>
-                                        <div class="text-center pt-3">
-                                            <p class="text-dark mb-0">Not a member?<a routerLink="/auth/register" class="text-primary ms-1">Sign UP now</a></p>
-                                        </div>
-                                    </form>
+                                        <div class="text-center pt-3" #notMem id="notMem">
+                                            <p class="text-dark mb-0">¿No eres miembro?<a routerLink="/auth/register" class="text-primary ms-1">Registrate ahora</a></p>
+                                        </div><br>
+                                        <div #recaptchaContainer id="recaptchaContainer" class="g-recaptcha" data-sitekey="6LdE3fIkAAAAAB3loxLMeornXqwfttPlUkZrE8AW"></div>
+                                    </form><br>
+                                    <div class="wrap-input100 validate-input" style="display: none;"  #inputConfirm id="inputConfirm">
+                                        <input  type="text" name="tokenConf" class="form-control input100" [(ngModel)]="tokenConf" placeholder="Ingrese el codigo de verificacion" required>
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="zmdi zmdi-email" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <button (click)="verificarCodigo()" #btnCon id="btnCon" style="display: none;"  type="submit" class="login100-form-btn btn-primary">Ingrese el codigó de verificación</button>
+                                    <button #btnConf id="btnConf" style="margin-left: 90px;"  onclick="verifyCaptcha()">Validar captcha</button>
                                 </div>
                                 <div class="card-footer">
                                     <div class="d-flex justify-content-center my-3">

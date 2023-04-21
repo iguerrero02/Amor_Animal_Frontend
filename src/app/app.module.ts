@@ -11,9 +11,9 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './authentication/register/register.component';
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbPaginationModule,  } from '@ng-bootstrap/ng-bootstrap';
-
+import { JwtInterceptor } from './services/jwt.interceptor';
 
 
 
@@ -39,7 +39,9 @@ import { NgbPaginationModule,  } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbPaginationModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

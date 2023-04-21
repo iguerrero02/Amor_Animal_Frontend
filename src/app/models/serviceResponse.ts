@@ -2,7 +2,7 @@ export class ServiceResponse<T> {
     status: string;
     message: string;
     count: number;
-    data: T;
+    response: T;
     lista: T[];
 
     //list: T[];
