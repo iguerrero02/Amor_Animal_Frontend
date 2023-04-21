@@ -71,3 +71,12 @@ ngb-carousel .wrapper>img {
   position: absolute;
   top: 0;
 }
+.social-media {
+  margin: 0;
+  text-align: center;
+}
+
+.social-media li {
+  display: inline-block;
+  margin-right: 10px;
+}
