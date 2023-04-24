@@ -70,7 +70,7 @@
                 <input
                   [(ngModel)]="searchTerm"
                   class="form-control"
-                  name="buscar"
+                  name="searchTerm"
                   placeholder="Buscar..."
                   type="text"
                   (keyup)="search()"
@@ -80,8 +80,8 @@
                 </button>
                 <ul>
                     <ng-container *ngIf="showResults">
-                      <li *ngFor="let item of results">
-                        <a [href]="item.url">{{ item.title }}</a>
+                      <li *ngFor="let item of results" style="cursor: pointer;">
+                        <a (click)="mandar(item.url)">{{ item.title }}</a>
                       </li>
                     </ng-container>
                   </ul>

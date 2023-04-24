@@ -1,6 +1,9 @@
 .dropdown-toggle::after{
     display: none;
 }
+a:hover {
+    background-color: #aeaef6;
+  }
 ::ng-deep{
     .dark-mode{
         .app-header .header-right-icons .nav-link.icon:hover{

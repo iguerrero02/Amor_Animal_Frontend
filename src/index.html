@@ -17,5 +17,27 @@
 </head>
 <body class=" layout-fullwidth fixed-layout">
   <app-root></app-root>
+
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+
+  <script>
+    function enableSubmitBtn() {
+      document.getElementById('submitbtn').style.display = "block";
+      document.getElementById('submitbtn2').style.display = "none";
+      document.getElementById('submitbtn').disabled = false;
+      window.alert("Se a habilitado el boton de 'Login'"  )
+    }
+    
+    function verifyCaptcha() {
+      var response = grecaptcha.getResponse();
+      if (response.length !== 0) {
+        enableSubmitBtn();
+      }else{
+        window.alert("Es necesario validar el captcha, para poder logearte")
+        document.getElementById('submit-btn').style.display = "none";
+      }
+
+    }
+    </script>
 </body>
 </html>
