@@ -103,4 +103,25 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  soloNumeros(event: any) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+  
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
+
+  validarLetras(event) {
+    const pattern = /[a-zA-Z]/;
+    const inputChar = String.fromCharCode(event.charCode);
+  
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+  
+  
+
 }

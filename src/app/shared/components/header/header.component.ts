@@ -11,6 +11,30 @@ import { NavService } from '../../services/nav.service';
 export class HeaderComponent implements OnInit {
 
   public isCollapsed = true;
+
+  items = [
+    { title: 'Productos', url: '/ecommerce/products' },
+    { title: 'Carrito de compra', url: '/ecommerce/shopping-cart' },
+    { title: 'Validacion de compra', url: '/ecommerce/checkout' },
+    { title: 'Ver mascotas', url: '/pages/blog' },
+    { title: 'Generar cita', url: '/forms/form-elements' },
+    { title: 'Mapa del sitio', url: '/pages/mapa-sitio' },
+    { title: '', url: '/dashboard' },
+  ];
+
+  searchTerm: string;
+
+  showResults = false;
+
+  results: { title: string, url: string }[] = [];
+
+  search() {
+     this.results = this.items.filter((item) =>
+      item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+    console.log(this.results); // muestra los elementos filtrados en la consola
+    this.showResults = this.searchTerm.length > 0 && this.results.length > 0;
+  }
   
   constructor(
     private layoutService: LayoutService,

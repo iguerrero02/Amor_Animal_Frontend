@@ -15,13 +15,13 @@ import { Router } from '@angular/router';
 })
 export class VeterinariaService {
 
-  private backendURL: string = "http://localhost:8080/clientes/";
+  private backendURL: string = "http://localhost:7929/clientes/";
 
-  private backendURLProd: string = "http://localhost:8080/Productos/";
+  private backendURLProd: string = "http://localhost:7929/Productos/";
 
-  private backendSec: string = "http://localhost:8080/seguridad/userLogin";
+  private backendSec: string = "http://localhost:7929/seguridad/userLogin";
 
-  private urlBack: string = "http://localhost:8080/"
+  private urlBack: string = "http://localhost:7929/"
 
   constructor(
     private httpClient: HttpClient, private router: Router
