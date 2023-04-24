@@ -53,9 +53,12 @@ export class RegisterComponent implements OnInit {
         this.apellidoP = ""
         this.apellidoM = ""
         this.telefono = "";
-        window.alert("Se a registrado el usuario correctamenete");
+        this.passwordConfirm = "";
+        window.alert("Se a registrado el usuario correctamenete, puedes iniciar sesión");
+        this.router.navigate(['/auth/login']);
       },error => {
         console.log('Password is incorrect');
+        window.alert("El correo ya existe");
       }
     )
 
