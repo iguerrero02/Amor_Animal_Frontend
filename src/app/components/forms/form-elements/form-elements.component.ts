@@ -53,10 +53,27 @@ export class FormElementsComponent implements OnInit {
     });
   }
 
+
   saveCita() {
+    let servicio;
+    this.servicioService.getServicioById(this.citasForm.value.id_servicio).subscribe(data => {
+      console.log(data)
+    servicio = data;
+    })
+    setTimeout(()=>{
+
+    const guardarCita= new Cita();
+    guardarCita.id_servicio =servicio;
+    guardarCita.nom_cliente= this.citasForm.value.nom_cliente;
+    guardarCita.nom_mascota= this.citasForm.value.nom_mascota;
+    guardarCita.raza_mascota= this.citasForm.value.raza_mascota;
+    console.log("guardar Cita")
+    console.log(guardarCita);
+
+
     if (this.citasForm.valid) {
       const cita = this.citasForm.value;
-      this.citasService.addCita(cita).subscribe(data => {
+      this.citasService.addCita(guardarCita).subscribe(data => {
         this.getCitas();
         this.citasForm.reset();
         Swal.fire({
@@ -83,6 +100,7 @@ export class FormElementsComponent implements OnInit {
         timer: 1500
       });
     }
+  },1000)
   }
 
 
