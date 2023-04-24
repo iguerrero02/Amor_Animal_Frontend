@@ -16,7 +16,7 @@ export class FormElementsComponent implements OnInit {
 
   citasForm: FormGroup;
   citas: Cita[];
-  servicios: Servicio[];
+  servicios: Servicio[] = [];
 
   constructor(private fb: FormBuilder, private citasService: CitaService, private servicioService: ServicioService) { }
 
@@ -41,6 +41,7 @@ export class FormElementsComponent implements OnInit {
   getCitas() {
     this.citasService.getCitas().subscribe(data => {
       this.citas = data;
+      console.log(data);
 
     });
   }
@@ -116,7 +117,7 @@ export class FormElementsComponent implements OnInit {
       nom_cliente: cita.nom_cliente,
       raza_mascota: cita.raza_mascota,
       nom_mascota: cita.nom_mascota,
-      id_servicio: cita.id_servicio.id_servicio
+      id_servicio: cita.id_servicio,
     });
   }
 
