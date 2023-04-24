@@ -24,6 +24,7 @@ import localeEs from '@angular/common/locales/es';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
