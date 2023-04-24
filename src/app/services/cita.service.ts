@@ -30,6 +30,7 @@ export class CitaService {
   }
 
   addCita(cita: Cita): Observable<Cita> {
+    console.log(cita);
     return this.http.post<Cita>(this.apiUrl, cita)
       .pipe(
         catchError(this.handleError)

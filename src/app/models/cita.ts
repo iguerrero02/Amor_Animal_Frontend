@@ -14,5 +14,5 @@ export class Cita{
   nom_mascota:string;
 
 
-  id_servicio: number;
+  id_servicio: Servicio;
 }
