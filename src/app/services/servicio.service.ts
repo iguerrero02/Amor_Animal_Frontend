@@ -8,7 +8,7 @@ import { Servicio } from '../models/servicio';
 })
 export class ServicioService {
 
-  private baseUrl = 'http://localhost:8081/api/servicios';
+  private baseUrl = 'https://amor-animal-backend-production.up.railway.app/api/servicios';
 
   constructor(private http: HttpClient) { }
 

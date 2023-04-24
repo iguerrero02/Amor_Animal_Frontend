@@ -10,7 +10,7 @@ import { Cita } from '../models/cita';
 })
 export class CitaService {
 
-  private apiUrl = 'http://localhost:8081/api/citas';
+  private apiUrl = 'https://amor-animal-backend-production.up.railway.app/api/citas';
 
   constructor(private http: HttpClient) { }
 

@@ -52,6 +52,7 @@
           },
           "configurations": {
             "production": {
+
               "budgets": [
                 {
                   "type": "initial",
@@ -125,3 +126,4 @@
   },
   "defaultProject": "myApp"
 }
+
