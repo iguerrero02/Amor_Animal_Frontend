@@ -12,8 +12,10 @@ export class AuthService {
 
     if (clientId == "general") {
         return false;
-    }else{
+    }else if(clientId == "admin"){
         return true;
+    }else{
+      return false;
     }
   }
 
