@@ -55,23 +55,28 @@ export class AdopcionComponent implements OnInit {
 
     });
   }
-  // saveAdopcion(): void {
-  //   this.adopcionService.saveAdopcion(this.adopcion).subscribe(data => {
-  //     this.adopciones.push(data);
-  //     this.adopcion = new Adopcion();
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: "Su proceso de adopción fue exitoso, espere indicaciones!",
-  //       showConfirmButton: false,
-  //       timer: 1500,
-  //     });
-  //   });
-  // }
 
   saveAdopcion() {
+    let mascota;
+    this.mascotaService.getMascota(this.adopcionForm.value.id_mascota).subscribe(data => {
+      console.log(data)
+      mascota = data;
+    })
+    setTimeout(()=>{
+
+    const guardarAdopcion= new Adopcion();
+    guardarAdopcion.mascota =mascota;
+    guardarAdopcion.nombre= this.adopcionForm.value.nombre;
+    guardarAdopcion.apellido= this.adopcionForm.value.apellido;
+    guardarAdopcion.edad= this.adopcionForm.value.edad;
+    guardarAdopcion.direccion= this.adopcionForm.value.direccion;
+    guardarAdopcion.ciudad= this.adopcionForm.value.ciudad;
+    guardarAdopcion.codigo_postal= this.adopcionForm.value.codigo_postal;
+    console.log("guardar Adopcion")
+    console.log(guardarAdopcion);
     if (this.adopcionForm.valid) {
       const adopcion = this.adopcionForm.value;
-      this.adopcionService.saveAdopcion(adopcion).subscribe(data => {
+      this.adopcionService.saveAdopcion(guardarAdopcion).subscribe(data => {
         this.getAdopciones();
         this.adopcionForm.reset();
         Swal.fire({
@@ -98,7 +103,9 @@ export class AdopcionComponent implements OnInit {
         timer: 1500
       });
     }
-  }
+  },1500)
+}
+
 
   deleteAdopcion(id: number): void {
     this.adopcionService.deleteAdopcion(id).subscribe(() => {

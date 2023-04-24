@@ -19,7 +19,7 @@
           <form [formGroup]="adopcionForm">
             <div class="form-group">
               <label class="form-label">Mascota:</label>
-              <select formControlName="id_mascota" class="form-control" [(ngModel)]="adopcion.id_mascota"
+              <select formControlName="id_mascota" class="form-control" [(ngModel)]="adopcion.mascota"
                 name="mascota">
                 <option value="">Seleccione una mascota</option>
                 <option *ngFor="let mascota of mascotas" [value]="mascota.id_mascota">{{mascota.nombre}}</option>
