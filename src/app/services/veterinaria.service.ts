@@ -26,6 +26,8 @@ export class VeterinariaService {
 
   private urlBack: string = "https://amor-animal-backend-production.up.railway.app/"
 
+  private urlLocal: string = "localhost:7929/"
+
 
   constructor(
     private httpClient: HttpClient, private router: Router
@@ -33,6 +35,14 @@ export class VeterinariaService {
 
 
   token: any;
+
+  verificarContraseña(email:any,codigo:any){
+    const cliente = {
+      correoElectronico: email
+    };
+    const complemento = "registro/clienteCorreo/" + codigo;
+    return this.httpClient.post<Cliente>(this.urlLocal + complemento, cliente);
+  }
 
   registrarCliente(cliente:any){
     const complemento = "registro/cliente";

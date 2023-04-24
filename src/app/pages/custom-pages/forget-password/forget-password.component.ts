@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VeterinariaService } from 'src/app/services/veterinaria.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(public productoService: VeterinariaService) { }
 
   ngOnInit(): void {
   }
+  contraActual:any;
+  emailM:any;
+
+
+  consultarContra(){
+    this.productoService.verificarContraseña(this.emailM,this.contraActual).subscribe(
+      response=>{
+  
+      }
+    )
+  }
+
 
 }

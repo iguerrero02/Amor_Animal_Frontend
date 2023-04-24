@@ -7,6 +7,9 @@ import { LockScreenComponent } from './lock-screen/lock-screen.component';
 import { CustomePagesRoutingModule } from './custome-pages-routing.module';
 import { UnderConstructionComponent } from 'src/app/components/pages/under-construction/under-construction.component';
 import { CdTimerModule } from 'angular-cd-timer';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -21,7 +24,9 @@ import { CdTimerModule } from 'angular-cd-timer';
   imports: [
     CommonModule,
     CustomePagesRoutingModule,
-    CdTimerModule
+    CdTimerModule,
+    NgbModule,
+    FormsModule
   ]
 })
 export class CustomPagesModule { }
