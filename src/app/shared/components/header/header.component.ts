@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit , Inject, OnChanges } from '@angular/c
 import { Subscription } from 'rxjs';
 import { LayoutService } from '../../services/layout.service';
 import { NavService } from '../../services/nav.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,7 @@ export class HeaderComponent implements OnInit {
     { title: '', url: '/dashboard' },
   ];
 
-  searchTerm: string;
+  searchTerm: any;
 
   showResults = false;
 
@@ -35,11 +36,20 @@ export class HeaderComponent implements OnInit {
     console.log(this.results); // muestra los elementos filtrados en la consola
     this.showResults = this.searchTerm.length > 0 && this.results.length > 0;
   }
+
+  
   
   constructor(
     private layoutService: LayoutService,
     public navServices: NavService,
+    private router: Router
   ) {}
+
+  mandar(valor:any){
+    this.searchTerm = null;
+    this.showResults = false
+    this.router.navigate([valor]);
+  }
   
   ngOnInit(): void {
   }
