@@ -81,7 +81,7 @@
                 <ul>
                     <ng-container *ngIf="showResults">
                       <li *ngFor="let item of results">
-                        <a [href]="item.url">{{ item.title }}</a>
+                        <a routerLink={{item.url}}>{{ item.title }}</a>
                       </li>
                     </ng-container>
                   </ul>
