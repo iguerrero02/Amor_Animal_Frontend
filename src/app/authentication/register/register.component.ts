@@ -59,6 +59,7 @@ export class RegisterComponent implements OnInit {
       },error => {
         console.log('Password is incorrect');
         window.alert("El correo ya existe");
+        this.router.navigate(['/dashboardtwo']);
       }
     )
 

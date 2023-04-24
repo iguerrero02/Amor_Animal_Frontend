@@ -113,7 +113,7 @@ export class VeterinariaService {
     return this.httpClient.post<Cliente[]>(this.urlBack + complemento, cliente, { observe: 'response' })
       .pipe(
         tap(response => {
-          const expiresIn = 9000; // tiempo en segundos
+          const expiresIn = 60; // tiempo en segundos
           const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
           this.token = response.headers.get('Authorization');
           console.log('Token:', this.token);
