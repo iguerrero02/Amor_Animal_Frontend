@@ -19,7 +19,7 @@
   <div class="form-group">
     <label class="form-label">Nombre del dueño</label>
     <div class="input-icon">
-      <input type="text" class="form-control" placeholder="Nombre" formControlName="nom_cliente">
+      <input type="text" class="form-control" placeholder="Nombre" formControlName="nom_cliente" maxlength="50" minlength="2">
     </div>
   </div>
 
@@ -33,13 +33,13 @@
   <div class="form-group">
     <label class="form-label">Raza de la mascota</label>
     <div class="input-icon">
-      <input type="text" class="form-control" placeholder="raza de mascota" formControlName="raza_mascota">
+      <input type="text" class="form-control" placeholder="raza de mascota" formControlName="raza_mascota" maxlength="50" minlength="2">
     </div>
   </div>
 
   <div class="form-group">
     <label class="form-label">Nombre de la mascota</label>
-    <input type="text" class="form-control" placeholder="Nombre de la Mascota" formControlName="nom_mascota">
+    <input type="text" class="form-control" placeholder="Nombre de la Mascota" formControlName="nom_mascota" maxlength="50" minlength="2">
   </div>
 
   <button (click)="saveCita()" class="btn btn-primary" type="submit">Enviar formulario</button>
