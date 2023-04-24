@@ -104,6 +104,14 @@ export class FormElementsComponent implements OnInit {
   }
 
 
+
+
+
+
+
+
+
+
   deleteCita(id: number) {
     Swal.fire({
       title: '¿Está seguro que desea eliminar la cita?',
