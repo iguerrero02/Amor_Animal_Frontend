@@ -7,7 +7,7 @@ import { Adopcion } from '../models/adopcion';
   providedIn: 'root'
 })
 export class AdopcionService {
-  private apiUrl = 'http://localhost:8081/api/adopciones';
+  private apiUrl = 'https://amor-animal-backend-production.up.railway.app/api/adopciones';
 
   constructor(private http: HttpClient) { }
 

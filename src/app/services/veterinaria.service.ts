@@ -15,13 +15,13 @@ import { Router } from '@angular/router';
 })
 export class VeterinariaService {
 
-  private backendURL: string = "http://localhost:8081/clientes/";
+  private backendURL: string = "https://amor-animal-backend-production.up.railway.app/clientes/";
 
-  private backendURLProd: string = "http://localhost:8081/Productos/";
+  private backendURLProd: string = "https://amor-animal-backend-production.up.railway.app/Productos/";
 
-  private backendSec: string = "http://localhost:8081/seguridad/userLogin";
+  private backendSec: string = "https://amor-animal-backend-production.up.railway.app/seguridad/userLogin";
 
-  private urlBack: string = "http://localhost:8081/"
+  private urlBack: string = "https://amor-animal-backend-production.up.railway.app/"
 
   constructor(
     private httpClient: HttpClient, private router: Router

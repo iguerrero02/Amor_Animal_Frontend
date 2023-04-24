@@ -9,7 +9,7 @@ import { Mascota } from '../models/mascota';
 })
 export class MascotaService {
 
-  private apiUrl = 'http://localhost:8081/api/mascotas';
+  private apiUrl = 'https://amor-animal-backend-production.up.railway.app/api/mascotas';
 
   constructor(private http: HttpClient) { }
 

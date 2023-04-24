@@ -14,6 +14,10 @@ import { LoginPageComponent } from './authentication/login-page/login-page.compo
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbPaginationModule,  } from '@ng-bootstrap/ng-bootstrap';
 import { JwtInterceptor } from './services/jwt.interceptor';
+import {LOCALE_ID} from '@angular/core';
+import {registerLocaleData} from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
 
 
 
@@ -27,6 +31,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
     RegisterComponent,
   ],
   imports: [
+    
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -40,9 +45,14 @@ import { JwtInterceptor } from './services/jwt.interceptor';
     NgbPaginationModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {provide: LOCALE_ID, useValue: 'es'},
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    registerLocaleData(localeEs, 'es');
+  }
+ }
