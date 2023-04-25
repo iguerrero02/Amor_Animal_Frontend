@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { Mascota } from 'src/app/models/mascota';
 import { MascotaService } from '../../../services/mascota.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ZipCodeService } from './ZipCodeService.service';
 
 
 @Component({
@@ -13,7 +14,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./adopcion.component.scss']
 })
 export class AdopcionComponent implements OnInit {
-
+  zipcode: string;
+  city: string;
+  state: string;
 
   adopcionForm: FormGroup;
 
@@ -22,7 +25,7 @@ export class AdopcionComponent implements OnInit {
 
   mascotas: Mascota[];
   constructor(private adopcionService: AdopcionService,
-    private mascotaService:MascotaService, private fb: FormBuilder ) { }
+    private mascotaService:MascotaService, private fb: FormBuilder, private zipCodeService: ZipCodeService ) { }
 
   ngOnInit(): void {
     this.adopcionService.getAdopciones().subscribe(data => {
@@ -35,6 +38,17 @@ export class AdopcionComponent implements OnInit {
 
     this.getAdopciones();
     this.createForm();
+  }
+  search() {
+    this.zipCodeService.getCityAndState(this.zipcode).subscribe(
+      (data: any) => {
+        this.city = data.city;
+        this.state = data.state;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
   createForm() {
     this.adopcionForm = this.fb.group({

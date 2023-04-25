@@ -65,15 +65,21 @@
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                       <label class="form-label">Ciudad <span class="text-red">*</span></label>
-                      <input type="text" class="form-control" placeholder="Ciudad" formControlName="ciudad" maxlength="50" minlength="2"/>
+                      <input type="text" class="form-control" placeholder="Ciudad" formControlName="ciudad"/>
                     </div>
                   </div>
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                       <label class="form-label">Codigo Postal<span class="text-red">*</span></label>
                       <input type="number" class="form-control" placeholder="Codigo Postal"
-                        formControlName="codigo_postal" />
+                        formControlName="codigo_postal"  />
+                        <!-- <button type="button" (click)="search()">Buscar</button> -->
+                        <!-- [(ngModel)]="zipcode" name="zipcode" -->
                     </div>
+                    <!-- <div *ngIf="city && state">
+                      <p>Ciudad: {{ city }}</p>
+                      <p>Estado: {{ state }}</p>
+                    </div> -->
                   </div>
                   <div class="col-md-12">
                     <button (click)="saveAdopcion()" class="btn btn-square btn-primary-light me-1">Adoptar</button>

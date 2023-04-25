@@ -5,7 +5,7 @@ import { ChartsModule } from 'ng2-charts';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DashboardtresComponent } from '../../components/dashboardtres/dashboardtres/dashboardtres/dashboardtres.component';
+import { DashboardtresComponent } from './dashboardtres/dashboardtres/dashboardtres.component';
 
 
 
