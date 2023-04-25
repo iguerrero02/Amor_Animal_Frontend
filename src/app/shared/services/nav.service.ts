@@ -109,19 +109,19 @@ export class NavService implements OnDestroy {
 
 
         },
-        
-        { headTitle: 'ERROR PAGES' },
-        {
-            title: 'Error Pages', icon: 'info', type: 'sub', active: false,
-            children: [
-                { path: '/error/error400', title: '400', type: 'link' },
-                { path: '/error/error401', title: '401', type: 'link' },
-                { path: '/error/error403', title: '403', type: 'link' },
-                { path: '/error/error404', title: '404', type: 'link' },
-                { path: '/error/error500', title: '500', type: 'link' },
-                { path: '/error/error503', title: '503', type: 'link' },
-            ]
-        }
+
+        // { headTitle: 'ERROR PAGES' },
+        // {
+        //     title: 'Error Pages', icon: 'info', type: 'sub', active: false,
+        //     children: [
+        //         { path: '/error/error400', title: '400', type: 'link' },
+        //         { path: '/error/error401', title: '401', type: 'link' },
+        //         { path: '/error/error403', title: '403', type: 'link' },
+        //         { path: '/error/error404', title: '404', type: 'link' },
+        //         { path: '/error/error500', title: '500', type: 'link' },
+        //         { path: '/error/error503', title: '503', type: 'link' },
+        //     ]
+        // }
     ];
 
     //array
