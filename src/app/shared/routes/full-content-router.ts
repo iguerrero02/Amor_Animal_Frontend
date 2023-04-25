@@ -6,7 +6,11 @@ export const full_content: Routes = [
   { 
     path: 'dashboard',
     loadChildren: () => import('../../components/dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
+  },
+  { 
+    path: 'dashboardtres',
+    loadChildren: () => import('../../components/dashboardtres/dashboardtres.module').then(m => m.DashboardtresModule)
   },
   { 
     path: 'dashboardtwo',
@@ -16,22 +20,22 @@ export const full_content: Routes = [
   {
     path: 'widgets',
     loadChildren: () => import('../../components/widgets/widgets.module').then(m => m.WidgetsModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'maps',
     loadChildren: () => import('../../components/maps/maps.module').then(m => m.MapsModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'components',
     loadChildren: () => import('../../components/components/components.module').then(m => m.ComponentsModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'elements',
     loadChildren: () => import('../../components/elements/elements.module').then(m => m.ElementsModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'advanced-elements',
@@ -47,7 +51,8 @@ export const full_content: Routes = [
   },
   {
     path: 'forms',
-    loadChildren: () => import('../../components/forms/forms.module').then(m => m.FormModule)
+    loadChildren: () => import('../../components/forms/forms.module').then(m => m.FormModule),
+    canActivate: [AuthGuard]
   },
   { 
     path: 'icons',
@@ -60,7 +65,7 @@ export const full_content: Routes = [
   {
     path: 'ecommerce',
     loadChildren: () => import('../../components/e-commerce/e-commerce.module').then(m => m.ECommerceModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   // {
   //   path: 'firebase',

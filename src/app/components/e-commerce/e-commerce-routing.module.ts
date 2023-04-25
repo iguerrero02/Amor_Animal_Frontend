@@ -5,6 +5,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ShopComponent } from './shop/shop.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,23 +13,28 @@ const routes: Routes = [
     children: [
       {
         path: 'products',
-        component: ShopComponent
+        component: ShopComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'product-details',
-        component: ProductDetailsComponent
+        component: ProductDetailsComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'shopping-cart',
-        component: ShoppingCartComponent
+        component: ShoppingCartComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'wishlist',
-        component: WishlistComponent
+        component: WishlistComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'checkout',
-        component: CheckoutComponent
+        component: CheckoutComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }

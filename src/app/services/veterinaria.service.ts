@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Producto } from '../models/producto';
 import { ListComponent } from '../components/elements/list/list.component';
 import { Cliente } from '../models/usuarios';
@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
 import { ServiceResponse } from '../models/serviceResponse';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -30,13 +31,13 @@ export class VeterinariaService {
 
 
   constructor(
-    private httpClient: HttpClient, private router: Router
+    private httpClient: HttpClient, private router: Router, private authService: AuthService
   ) { }
 
 
   token: any;
 
-  verificarContraseña(email:any,codigo:any){
+  verificarContraseña(email: any, codigo: any) {
     const cliente = {
       correoElectronico: email
     };
@@ -44,7 +45,7 @@ export class VeterinariaService {
     return this.httpClient.post<Cliente>(this.urlLocal + complemento, cliente);
   }
 
-  registrarCliente(cliente:any){
+  registrarCliente(cliente: any) {
     const complemento = "registro/cliente";
     return this.httpClient.post<Cliente>(this.urlBack + complemento, cliente);
   }
@@ -73,10 +74,10 @@ export class VeterinariaService {
     return this.httpClient.get<ServiceResponse<Producto[]>>(this.backendURLProd + complemento);
   }
 
-  buscarProductosFiltro(cliente:any): Observable<ServiceResponse<Producto[]>> {
+  buscarProductosFiltro(cliente: any): Observable<ServiceResponse<Producto[]>> {
     console.log("Consultando productos");
     const complemento = "productosBuscar";
-    return this.httpClient.post<ServiceResponse<Producto[]>>(this.backendURLProd + complemento,cliente);
+    return this.httpClient.post<ServiceResponse<Producto[]>>(this.backendURLProd + complemento, cliente);
   }
 
 
@@ -86,7 +87,7 @@ export class VeterinariaService {
     return this.httpClient.get<ServiceResponse<Cliente[]>>(this.backendURL + complemento);
   }
 
-  login(email: string, password: string):Observable<ServiceResponse<Cliente>> {
+  login(email: string, password: string): Observable<ServiceResponse<Cliente>> {
     const complemento = "loginCliente";
     const cliente = {
       correoElectronico: email,
@@ -104,6 +105,166 @@ export class VeterinariaService {
     return this.httpClient.post<any>(this.backendURL + complemento, cliente);
   }
 
+  autenticacionUsuario2(email: string, password: string): Observable<Cliente[]> {
+    const complemento = "loginCliente";
+    const cliente = {
+      email: email,
+      password: password
+    };
+    let idleTimeout: any;
+    let isSessionExtending = false;
+    let showConfirm = true;
+    let confirmationTimeout: any; // Variable de tiempo para la confirmación automática
+    const handleIdleTimeout = () => {
+      if (showConfirm) {
+        const extendSession = confirm('¿Desea extender la sesión?');
+        if (extendSession) {
+          const newExpirationDate = new Date(new Date().getTime() + 600 * 1000);
+          localStorage.setItem('authTokenExpiration', newExpirationDate.toISOString());
+          this.router.navigate(['/dashboard']);
+          isSessionExtending = true;
+          showConfirm = true;
+        } else {
+          this.logout();
+          this.router.navigate(['']);
+          showConfirm = false;
+        }
+      }
+    };
+    const handleConfirmationTimeout = () => {
+      if (showConfirm) {
+        handleIdleTimeout();
+        confirmationTimeout = setTimeout(handleConfirmationTimeout, 10000); // 10 segundos
+      }
+    };
+  
+    return this.httpClient.post<Cliente[]>(this.urlBack + complemento, cliente, { observe: 'response' })
+      .pipe(
+        tap(response => {
+          const expiresIn = 600;
+          const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+          this.token = response.headers.get('Authorization');
+          console.log('Token:', this.token);
+          localStorage.setItem('authTokenExpiration', expirationDate.toISOString());
+          localStorage.setItem('access_token', this.token);
+
+          
+  
+          document.addEventListener('mousemove', () => {
+            clearTimeout(idleTimeout);
+            if (!isSessionExtending) {
+              idleTimeout = setTimeout(handleIdleTimeout, 10000); // 10 segundos
+            }
+          });
+  
+          idleTimeout = setTimeout(handleIdleTimeout, 10000); // 10 segundos
+  
+          confirmationTimeout = setTimeout(handleConfirmationTimeout, 30000); // 30 segundos
+  
+          setTimeout(() => {
+            const isExpired = this.isSessionExpired();
+            if (isExpired) {
+              this.router.navigate(['']);
+            }
+          }, 60 * 1000);
+
+          
+
+          setTimeout(() => {
+            const isExpired = this.isSessionExpired();
+            if (!isExpired && showConfirm) {
+              const extendSession = confirm('¿Desea extender la sesión?');
+              if (extendSession) {
+                const newExpirationDate = new Date(new Date().getTime() + 600 * 1000);
+                localStorage.setItem('authTokenExpiration', newExpirationDate.toISOString());
+                this.router.navigate(['/dashboard']);
+                isSessionExtending = true;
+                showConfirm = true;
+              } else {
+                this.logout();
+                this.router.navigate(['']);
+                showConfirm = false;
+              }
+            }
+          }, 45 * 1000);
+        }),
+        map(response => response.body || [])
+      );
+  }
+
+
+  
+  autenticacionUsuario22(email: string, password: string): Observable<Cliente[]> {
+    const complemento = "loginCliente";
+    const cliente = {
+      email: email,
+      password: password
+    };
+    let idleTimeout: any;
+    let isSessionExtending = false;
+    let showConfirm = true;
+    let confirmationTimeout: any; // Variable de tiempo para la confirmación automática
+    const handleIdleTimeout = () => {
+      if (showConfirm) {
+        const extendSession = confirm('¿Desea extender la sesión?');
+        if (extendSession) {
+          const newExpirationDate = new Date(new Date().getTime() + 600 * 1000);
+          localStorage.setItem('authTokenExpiration', newExpirationDate.toISOString());
+          this.router.navigate(['/dashboard']);
+          isSessionExtending = true;
+          showConfirm = true;
+        } else {
+          this.logout();
+          this.router.navigate(['']);
+          showConfirm = false;
+        }
+      }
+    };
+    const handleConfirmationTimeout = () => {
+      if (showConfirm) {
+        handleIdleTimeout();
+        confirmationTimeout = setTimeout(handleConfirmationTimeout, 10000); // 10 segundos
+      }
+    };
+  
+    return this.httpClient.post<Cliente[]>(this.urlBack + complemento, cliente, { observe: 'response' })
+      .pipe(
+        tap(response => {
+          const expiresIn = 600;
+          const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+          this.token = response.headers.get('Authorization');
+          console.log('Token:', this.token);
+          localStorage.setItem('authTokenExpiration', expirationDate.toISOString());
+          localStorage.setItem('access_token', this.token);
+  
+          document.addEventListener('mousemove', () => {
+            clearTimeout(idleTimeout);
+            if (!isSessionExtending) {
+              idleTimeout = setTimeout(handleIdleTimeout, 10000); // 10 segundos
+            }
+          });
+  
+          idleTimeout = setTimeout(handleIdleTimeout, 10000); // 10 segundos
+  
+          confirmationTimeout = setTimeout(handleConfirmationTimeout, 30000); // 30 segundos
+  
+          setTimeout(() => {
+            const isExpired = this.isSessionExpired();
+            if (isExpired) {
+              this.router.navigate(['']);
+            }
+          }, 60 * 1000);
+        }),
+        map(response => response.body || [])
+      );
+  }
+  
+  
+  
+
+  
+  
+
   autenticacionUsuario(email: string, password: string): Observable<Cliente[]> {
     const complemento = "loginCliente";
     const cliente = {
@@ -119,10 +280,53 @@ export class VeterinariaService {
           console.log('Token:', this.token);
           localStorage.setItem('authTokenExpiration', expirationDate.toISOString());
           localStorage.setItem('access_token', this.token);
+          
+          setTimeout(() => {
+            const isExpired = this.isSessionExpired();
+            if (!isExpired) {
+              setTimeout(() => {
+                const extendSession = confirm('¿Desea extender la sesión?');
+                if (extendSession) {
+                  const newExpirationDate = new Date(new Date().getTime() + 60 * 1000);
+                  localStorage.setItem('authTokenExpiration', newExpirationDate.toISOString());
+                  this.router.navigate(['/dashboard']);
+                } else {
+                  this.logout();
+                  this.router.navigate(['']);
+                }
+              }, 15 * 1000);
+            }
+          }, 45 * 1000);
+  
+          setTimeout(() => {
+            const isExpired = this.isSessionExpired();
+            if (isExpired) {
+              this.router.navigate(['']);
+            }
+          }, 60 * 1000);
         }),
         map(response => response.body || [])
       );
   }
+  
+  
+
+  
+
+
+
+  isSessionExpired(): boolean {
+    const expirationDateString = localStorage.getItem('authTokenExpiration');
+    const expirationDate = expirationDateString ? new Date(expirationDateString) : null;
+    if (expirationDate === null) {
+      return true;
+    }
+    return new Date() >= expirationDate;
+  }
+
+
+
+
 
   public isLoggedIn(): boolean {
     // Obtener el token de autenticación desde el almacenamiento local
@@ -141,11 +345,13 @@ export class VeterinariaService {
     return false;
   }
 
-
-
-  logout() {
-    localStorage.removeItem('access_token');
+  logout(): void {
     localStorage.removeItem('authTokenExpiration');
+    localStorage.removeItem('access_token');
+    this.token = null;
   }
+
+
+
 
 }

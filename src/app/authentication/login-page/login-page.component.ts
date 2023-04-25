@@ -225,7 +225,7 @@ export class LoginPageComponent implements OnInit {
               const clientId = sessionStorage.getItem('tipo');
               console.log(clientId);
 
-              this.usuarioService.autenticacionUsuario(this.email, this.password).subscribe(
+              this.usuarioService.autenticacionUsuario2(this.email, this.password).subscribe(
                 response => {
                   console.log("Hola bebe autorizacion");
 

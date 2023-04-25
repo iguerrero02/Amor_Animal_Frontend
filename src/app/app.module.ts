@@ -17,7 +17,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 import {LOCALE_ID} from '@angular/core';
 import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 
@@ -32,7 +32,7 @@ import localeEs from '@angular/common/locales/es';
     RegisterComponent,
   ],
   imports: [
-    
+    ModalModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

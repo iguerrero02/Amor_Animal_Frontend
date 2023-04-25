@@ -19,4 +19,14 @@ export class AuthService {
     }
   }
 
+  isSessionExpired(): boolean {
+    const expirationDateString = localStorage.getItem('authTokenExpiration');
+    const expirationDate = expirationDateString ? new Date(expirationDateString) : null;
+    if (expirationDate === null) {
+        return true; // O cualquier otra acción que quieras realizar si no hay fecha de expiración
+    }
+    return new Date() >= expirationDate;
+}
+
+
 }

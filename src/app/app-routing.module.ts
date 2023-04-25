@@ -13,7 +13,7 @@ import { error_content } from './shared/routes/error-content-router';
 import { full_content } from './shared/routes/full-content-router';
 
 const routes: Routes = [
-  { path: '', redirectTo:'auth/login', pathMatch: 'full'},
+  { path: '', redirectTo:'dashboardtres', pathMatch: 'full'},
   { path: 'auth/login', component: LoginPageComponent },
   { path: 'auth/register', component: RegisterComponent },
   { path: '', component: FullContentComponent, children: full_content },
