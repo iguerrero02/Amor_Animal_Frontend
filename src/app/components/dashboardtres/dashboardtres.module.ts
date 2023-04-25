@@ -12,7 +12,7 @@ import { DashboardtresComponent } from './dashboardtres/dashboardtres/dashboardt
 @NgModule({
   declarations: [
 
-    DashboardtresComponent
+   // DashboardtresComponent
   ],
   imports: [
     CommonModule,

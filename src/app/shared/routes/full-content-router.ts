@@ -3,16 +3,16 @@ import { AdminAuthGuard } from 'src/app/guards/admin-auth.guard';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 
 export const full_content: Routes = [
-  { 
+  {
     path: 'dashboard',
     loadChildren: () => import('../../components/dashboard/dashboard.module').then(m => m.DashboardModule),
     //canActivate: [AuthGuard]
   },
-  { 
+  {
     path: 'dashboardtres',
     loadChildren: () => import('../../components/dashboardtres/dashboardtres.module').then(m => m.DashboardtresModule)
   },
-  { 
+  {
     path: 'dashboardtwo',
     loadChildren: () => import('../../components/dashboardtwo/dashboardtwo.module').then(m => m.DashboardtwoModule),
     canActivate: [AdminAuthGuard]
@@ -54,7 +54,7 @@ export const full_content: Routes = [
     loadChildren: () => import('../../components/forms/forms.module').then(m => m.FormModule),
     canActivate: [AuthGuard]
   },
-  { 
+  {
     path: 'icons',
     loadChildren: () => import('../../components/icons/icons.module').then(m => m.IconsModule)
   },
