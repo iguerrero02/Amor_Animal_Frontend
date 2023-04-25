@@ -88,6 +88,7 @@ export class AdopcionComponent implements OnInit {
     guardarAdopcion.codigo_postal= this.adopcionForm.value.codigo_postal;
     console.log("guardar Adopcion")
     console.log(guardarAdopcion);
+    console.log(this.adopcionForm.valid)
     if (this.adopcionForm.valid) {
       const adopcion = this.adopcionForm.value;
       this.adopcionService.saveAdopcion(guardarAdopcion).subscribe(data => {

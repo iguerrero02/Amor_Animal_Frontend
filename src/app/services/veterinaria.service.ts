@@ -137,7 +137,7 @@ export class VeterinariaService {
         confirmationTimeout = setTimeout(handleConfirmationTimeout, 10000); // 10 segundos
       }
     };
-  
+
     return this.httpClient.post<Cliente[]>(this.urlBack + complemento, cliente, { observe: 'response' })
       .pipe(
         tap(response => {
@@ -148,19 +148,19 @@ export class VeterinariaService {
           localStorage.setItem('authTokenExpiration', expirationDate.toISOString());
           localStorage.setItem('access_token', this.token);
 
-          
-  
+
+
           document.addEventListener('mousemove', () => {
             clearTimeout(idleTimeout);
             if (!isSessionExtending) {
-              idleTimeout = setTimeout(handleIdleTimeout, 10000); // 10 segundos
+              idleTimeout = setTimeout(handleIdleTimeout, 80000); // 10 segundos
             }
           });
-  
-          idleTimeout = setTimeout(handleIdleTimeout, 10000); // 10 segundos
-  
+
+          idleTimeout = setTimeout(handleIdleTimeout, 80000); // 10 segundos
+
           confirmationTimeout = setTimeout(handleConfirmationTimeout, 30000); // 30 segundos
-  
+
           setTimeout(() => {
             const isExpired = this.isSessionExpired();
             if (isExpired) {
@@ -168,7 +168,7 @@ export class VeterinariaService {
             }
           }, 60 * 1000);
 
-          
+
 
           setTimeout(() => {
             const isExpired = this.isSessionExpired();
@@ -193,7 +193,7 @@ export class VeterinariaService {
   }
 
 
-  
+
   autenticacionUsuario22(email: string, password: string): Observable<Cliente[]> {
     const complemento = "loginCliente";
     const cliente = {
@@ -226,7 +226,7 @@ export class VeterinariaService {
         confirmationTimeout = setTimeout(handleConfirmationTimeout, 10000); // 10 segundos
       }
     };
-  
+
     return this.httpClient.post<Cliente[]>(this.urlBack + complemento, cliente, { observe: 'response' })
       .pipe(
         tap(response => {
@@ -236,18 +236,18 @@ export class VeterinariaService {
           console.log('Token:', this.token);
           localStorage.setItem('authTokenExpiration', expirationDate.toISOString());
           localStorage.setItem('access_token', this.token);
-  
+
           document.addEventListener('mousemove', () => {
             clearTimeout(idleTimeout);
             if (!isSessionExtending) {
-              idleTimeout = setTimeout(handleIdleTimeout, 10000); // 10 segundos
+              idleTimeout = setTimeout(handleIdleTimeout, 80000); // 10 segundos
             }
           });
-  
-          idleTimeout = setTimeout(handleIdleTimeout, 10000); // 10 segundos
-  
+
+          idleTimeout = setTimeout(handleIdleTimeout, 80000); // 10 segundos
+
           confirmationTimeout = setTimeout(handleConfirmationTimeout, 30000); // 30 segundos
-  
+
           setTimeout(() => {
             const isExpired = this.isSessionExpired();
             if (isExpired) {
@@ -258,12 +258,12 @@ export class VeterinariaService {
         map(response => response.body || [])
       );
   }
-  
-  
-  
 
-  
-  
+
+
+
+
+
 
   autenticacionUsuario(email: string, password: string): Observable<Cliente[]> {
     const complemento = "loginCliente";
@@ -280,7 +280,7 @@ export class VeterinariaService {
           console.log('Token:', this.token);
           localStorage.setItem('authTokenExpiration', expirationDate.toISOString());
           localStorage.setItem('access_token', this.token);
-          
+
           setTimeout(() => {
             const isExpired = this.isSessionExpired();
             if (!isExpired) {
@@ -297,7 +297,7 @@ export class VeterinariaService {
               }, 15 * 1000);
             }
           }, 45 * 1000);
-  
+
           setTimeout(() => {
             const isExpired = this.isSessionExpired();
             if (isExpired) {
@@ -308,10 +308,10 @@ export class VeterinariaService {
         map(response => response.body || [])
       );
   }
-  
-  
 
-  
+
+
+
 
 
 
