@@ -134,7 +134,7 @@ export class VeterinariaService {
     const handleConfirmationTimeout = () => {
       if (showConfirm) {
         handleIdleTimeout();
-        confirmationTimeout = setTimeout(handleConfirmationTimeout, 10000); // 10 segundos
+        confirmationTimeout = setTimeout(handleConfirmationTimeout, 100000); // 10 segundos
       }
     };
 
@@ -153,11 +153,11 @@ export class VeterinariaService {
           document.addEventListener('mousemove', () => {
             clearTimeout(idleTimeout);
             if (!isSessionExtending) {
-              idleTimeout = setTimeout(handleIdleTimeout, 80000); // 10 segundos
+              idleTimeout = setTimeout(handleIdleTimeout, 100000); // 10 segundos
             }
           });
 
-          idleTimeout = setTimeout(handleIdleTimeout, 80000); // 10 segundos
+          idleTimeout = setTimeout(handleIdleTimeout, 100000); // 10 segundos
 
           confirmationTimeout = setTimeout(handleConfirmationTimeout, 30000); // 30 segundos
 
@@ -223,7 +223,7 @@ export class VeterinariaService {
     const handleConfirmationTimeout = () => {
       if (showConfirm) {
         handleIdleTimeout();
-        confirmationTimeout = setTimeout(handleConfirmationTimeout, 10000); // 10 segundos
+        confirmationTimeout = setTimeout(handleConfirmationTimeout, 100000); // 10 segundos
       }
     };
 
@@ -240,11 +240,11 @@ export class VeterinariaService {
           document.addEventListener('mousemove', () => {
             clearTimeout(idleTimeout);
             if (!isSessionExtending) {
-              idleTimeout = setTimeout(handleIdleTimeout, 80000); // 10 segundos
+              idleTimeout = setTimeout(handleIdleTimeout, 100000); // 10 segundos
             }
           });
 
-          idleTimeout = setTimeout(handleIdleTimeout, 80000); // 10 segundos
+          idleTimeout = setTimeout(handleIdleTimeout, 100000); // 10 segundos
 
           confirmationTimeout = setTimeout(handleConfirmationTimeout, 30000); // 30 segundos
 

@@ -21,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     ProductDetailsComponent,
     ShoppingCartComponent,
     WishlistComponent,
-    CheckoutComponent
+    CheckoutComponent,
+
   ],
   imports: [
     CommonModule,

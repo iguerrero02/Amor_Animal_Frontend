@@ -2,15 +2,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { CarritoService } from 'src/app/services/carrito.service';
 
-
 interface cart {
   id: number;
   image: string;
-  title: string;
-  price: string;
+  Titulo: string;
+  precioVenta: string;
   Stock: string;
   stockStatus: string;
-  quantity: number;
+  Cantidad: number;
 }
 
 @Component({
@@ -21,84 +20,80 @@ interface cart {
 export class ShoppingCartComponent implements OnInit {
 
   cartItems;
-  total;
+  total: number = 0;
   total2;
   com = 1;
   parentDivNum;
 
   objectArray: cart[];
+
   constructor(private carrito: CarritoService) {  }
 
   ngOnInit(): void {
     this.cartItems = this.carrito.getItems();
     this.obtenerTotal();
+
   }
 
-  obtenerTotal(){
+obtenerTotal() {
     this.cartItems = this.carrito.getItems();
+    let total = 0;
     this.cartItems.forEach((element: any) => {
-    this.total = element.precio;
-    this.total + this.total;
-    })
-  }
-
-  obtenerTotal2(){
-    const plus:any = document.querySelectorAll('#plus');
-    const minus:any = document.querySelectorAll('#minus');
-    this.cartItems = this.carrito.getItems();
-    this.cartItems.forEach((element: any) => {
-    this.total = element.precio;
-    this.total + this.total;
-    this.total2 + this.total;
-    plus.forEach( (element:any)=>{
-      let parentDiv = element.parentElement.parentElement;
-        element.addEventListener('click',()=>{
-          this.com++
-        })
-    } )
-
-    minus.forEach( (element:any)=>{
-      let parentDiv = element.parentElement.parentElement;
-        element.addEventListener('click',()=>{
-           if(parentDiv.children[1].value  != 0){
-            this.com--;
-           }
-        })
-    } )
-
-    })
-  }
-
-
- ngAfterViewInit(){
-  this.obtenerTotal2();
-  this. obtenerTotal();
-  const plus:any = document.querySelectorAll('#plus');
-  const minus:any = document.querySelectorAll('#minus');
-  function perfectChart(){
-    plus.forEach( (element:any)=>{
-      let parentDiv = element.parentElement.parentElement;
-        element.addEventListener('click',()=>{
-          parentDiv.children[1].value++
-        })
-    } )
-    minus.forEach( (element:any)=>{
-      let parentDiv = element.parentElement.parentElement;
-        element.addEventListener('click',()=>{
-           if(parentDiv.children[1].value  != 0){
-            parentDiv.children[1].value-- 
-           }
-        })
-    } )
-  }
-  perfectChart()
-  } 
-
-  
-  RemoveElementFromObjectArray(key: any) {
-    this.cartItems.forEach((value,index)=>{
-        if(value.id==key) this.objectArray.splice(index,1);
+      let cantidad = parseFloat(element.Cantidad);
+      console.log("element.Cantidad: ", element.Cantidad);
+      if (!isNaN(cantidad)) {
+        total += element.precioVenta * cantidad;
+      }
     });
-  } 
+    this.total = total;
 }
 
+
+  onQuantityChange(index: number, quantity: number) {
+    this.cartItems[index].Cantidad = quantity;
+    this.obtenerTotal();
+  }
+
+  ngAfterViewInit(){
+    const plus:any = document.querySelectorAll('#plus');
+    const minus:any = document.querySelectorAll('#minus');
+    plus.forEach( (element:any)=>{
+      let parentDiv = element.parentElement.parentElement;
+        element.addEventListener('click',()=>{
+          let input = parentDiv.children[1];
+          input.value++;
+          let id = parentDiv.getAttribute('data-id');
+          this.cartItems.forEach((item: any) => {
+            if (item.id == id) {
+              item.Cantidad = parseInt(input.value);
+            }
+          });
+          this.obtenerTotal();
+        })
+    } )
+    minus.forEach( (element:any)=>{
+      let parentDiv = element.parentElement.parentElement;
+        element.addEventListener('click',()=>{
+           let input = parentDiv.children[1];
+           if(input.value != 0){
+            input.value--;
+            let id = parentDiv.getAttribute('data-id');
+            this.cartItems.forEach((item: any) => {
+              if (item.id == id) {
+                item.Cantidad = parseInt(input.value);
+              }
+            });
+            this.obtenerTotal();
+           }
+        })
+    } )
+  }
+
+  RemoveElementFromObjectArray(key: any) {
+    this.cartItems.forEach((value,index)=>{
+        if(value.id==key) this.cartItems.splice(index,1);
+
+    });
+    this.obtenerTotal();
+  }
+}
