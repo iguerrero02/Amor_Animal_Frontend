@@ -82,6 +82,7 @@ export class ShopComponent implements OnInit {
 
     this.productoService.buscarProductosFiltro(producto).subscribe(
      response =>{
+      console.log(response.response);
         this.productos = response.response;
         // response.forEach(valor => {
         //   this.productos.descripcion = valor.descripcion;

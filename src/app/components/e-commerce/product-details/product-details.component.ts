@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -13,10 +14,17 @@ export class ProductDetailsComponent implements OnInit {
   currentRoute: any;
   urlData: any;
   customOptions!: OwlOptions
+  iamgen;
  
-  constructor(){}
+  constructor(private route: ActivatedRoute){}
   
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      const descripcionBreve = params['descripcionBreve'];
+      this.iamgen = descripcionBreve;
+    });
+
     this.customOptions = {
       loop: true,
       rewind: false,

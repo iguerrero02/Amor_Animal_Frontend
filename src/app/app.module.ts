@@ -18,6 +18,7 @@ import {LOCALE_ID} from '@angular/core';
 import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { ModalModule } from 'ngx-bootstrap/modal';
+// import { PaypalComponent } from './paypal/paypal.component';
 
 
 
@@ -43,7 +44,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
